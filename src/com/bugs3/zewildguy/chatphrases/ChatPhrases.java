@@ -1,4 +1,4 @@
-package com.bugs3.zewildguy;
+package com.bugs3.zewildguy.chatphrases;
 
 import java.util.Arrays;
 
