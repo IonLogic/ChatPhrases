@@ -17,14 +17,15 @@ public class ChatPhrases extends JavaPlugin {
 	@Override
 	public void onEnable() {
 		
-		this.saveDefaultConfig();
+		//this.saveDefaultConfig();
 		
-		List<String> listOfStrings = Arrays.asList("Hello World", "Welcome to Bukkit", "Have a Good Day!");
-		this.getConfig().set("phrases", listOfStrings);
+		//List<String> listOfStrings = Arrays.asList("Hello World", "Welcome to Bukkit", "Have a Good Day!");
+		//this.getConfig().set("phrases", listOfStrings);
 		
 		ChatPhrase.addPhrase("phrase_id", "phrase_content");
 		ChatPhrase.addPhrase("example_phrase", "&3This is an example phrase!");
 		
+		/*
 		for(String phrase : listOfStrings) {
 			phrase.split("");
 			
@@ -33,6 +34,7 @@ public class ChatPhrases extends JavaPlugin {
 			
 			ChatPhrase.addGlobalPhrase(phrase_id, phrase_content);
 		}
+		*/
 		
 		
 	}
