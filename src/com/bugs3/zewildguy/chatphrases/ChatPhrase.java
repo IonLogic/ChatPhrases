@@ -7,6 +7,8 @@ public class ChatPhrase {
 	private static HashMap<String, String> LocalPhrases = new HashMap<String, String>();
 	private static HashMap<String, String> GlobalPhrases = new HashMap<String, String>();
 	
+	public static String error = "The requested phrase could not be found!";
+	
 	public static String match(String phrase_to_match) {
 		boolean match = false; 
 		String error = "The requested phrase could not be found!";
@@ -27,7 +29,6 @@ public class ChatPhrase {
 	
 	public static String matchGlobal(String phrase_to_match) {
 		boolean match = false; 
-		//String error = "The requested phrase could not be found!";
 		
 		for(String phrase_key : GlobalPhrases.keySet()) {
 			if(phrase_key.equalsIgnoreCase(phrase_to_match)) {
@@ -68,17 +69,21 @@ public class ChatPhrase {
 		
 		String phrase_key = match(requested_phrase_id);
 		
-		String phrase_value = getValue(phrase_key);
+		if(phrase_key != null) {
+			String phrase_value = getValue(phrase_key);
 	
-		String final_phrase = ChatFormatParser.parseChatColour(phrase_value);
+			String final_phrase = ChatFormatParser.parseChatColour(phrase_value);
 		
-		return final_phrase;
+			return final_phrase;
+		} else {
+			return error;
+		}
 	}
 	
 	/**
 	 * Looks for and gets a phrase specified in the config.yml file. If no phrase is found, it will search for a phrase specified by the plugin.
 	 * 
-	 * @author mba2012
+	 * @author ZeWildGuy
 	 * @param requested_phrase_id
 	 * @return phrase
 	 */
