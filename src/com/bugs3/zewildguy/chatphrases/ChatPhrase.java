@@ -85,25 +85,30 @@ public class ChatPhrase {
 	 * 
 	 * @author ZeWildGuy
 	 * @param requested_phrase_id
+	 * @param backup_phrase_id
 	 * @return phrase
 	 */
-	public static String getPhrase(String requested_phrase_id) {
+	public static String getPhrase(String requested_phrase_id, String backup_phrase_id) {
 		
 		String phrase_key = matchGlobal(requested_phrase_id);
+		String backup_phrase_key = match(backup_phrase_id);
 		
 		if(phrase_key != null) {
 			String phrase_value = getValueGlobal(phrase_key);
 			
 			String final_phrase = ChatFormatParser.parseChatColour(phrase_value);
-			
 			return final_phrase;
-		} else {
-			String phrase_key1 = match(requested_phrase_id);
+			
+		} else if(backup_phrase_key != null) {
+			String phrase_key1 = match(backup_phrase_id);
 			
 			String phrase_value1 = getValue(phrase_key1);
 		
 			String final_phrase1 = ChatFormatParser.parseChatColour(phrase_value1);
 			return final_phrase1;
+			
+		} else {
+			return error;
 		}
 		
 		
