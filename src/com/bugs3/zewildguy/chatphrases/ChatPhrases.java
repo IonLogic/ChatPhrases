@@ -26,15 +26,15 @@ public class ChatPhrases extends JavaPlugin {
 		
 		
 		for(String phrase : listOfStrings) {
-			phrase.split("");
+			//String[] splits = phrase.split("%b", 2);
+			String[] temp;
+			temp = phrase.split("%b", 2);
 			
-			String phrase_id = null;
-			String phrase_content = null;
+			String phrase_id = temp[1];
+			String phrase_content = temp[2];
 			
 			ChatPhrase.addGlobalPhrase(phrase_id, phrase_content);
+
 		}
-		
-		
-		
 	}
 }
