@@ -2,6 +2,11 @@ package com.bugs3.zewildguy.chatphrases;
 
 import java.util.HashMap;
 
+/**
+ * ChatPhrase class stores all methods for ChatPhrase objects.
+ * 
+ * @author ZeWildGuy
+ */
 public class ChatPhrase {
 
 	private static HashMap<String, String> LocalPhrases = new HashMap<String, String>();
@@ -114,6 +119,12 @@ public class ChatPhrase {
 		
 	}
 	
+	/**
+	 * Adds a phrase to the GlobalPhrase list. <b>Not for general use.</b>
+	 * @author ZeWildGuy
+	 * @param phrase_id
+	 * @param phrase
+	 */
 	public static void addGlobalPhrase(String phrase_id, String phrase) {
         GlobalPhrases.put(phrase_id, phrase);
 	}

@@ -2,8 +2,20 @@ package com.bugs3.zewildguy.chatphrases;
 
 import org.bukkit.ChatColor;
 
+/**
+ * Parses strings through a number of methods. Can parse colour, format and both
+ * 
+ * @author ZeWildGuy
+ */
 public class ChatFormatParser {
 
+	/**
+	 * Parses colour codes
+	 * 
+	 * @author ZeWildGuy
+	 * @param message
+	 * @return message
+	 */
 	public static String parseChatColour(String message) {
 		
 		//Parse Colours
@@ -27,6 +39,13 @@ public class ChatFormatParser {
 		return message;
 	}
 	
+	/**
+	 * Parses format codes
+	 * 
+	 * @author ZeWildGuy
+	 * @param message
+	 * @return message
+	 */
 	public static String parseChatFormat(String message) {
 		
 		//Parse Colours
@@ -40,6 +59,13 @@ public class ChatFormatParser {
 		return message;
 	}
 
+	/**
+	 * Parses chat through both the format and colour parsers.
+	 * 
+	 * @author ZeWildGuy
+	 * @param message
+	 * @return message
+	 */
 	public static String parseChat(String message) {
 	
 	message = parseChatColour(message);
