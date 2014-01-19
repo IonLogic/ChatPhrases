@@ -19,8 +19,7 @@ public class ChatPhrases extends JavaPlugin {
 		
 		this.saveDefaultConfig();
 		
-		//List<String> listOfStrings = Arrays.asList("Hello World", "Welcome to Bukkit", "Have a Good Day!");
-		//this.getConfig().set("phrases", listOfStrings);
+		List<String> listOfStrings = this.getConfig().getStringList("phrases");
 		
 		ChatPhrase.addPhrase("phrase_id", "phrase_content");
 		ChatPhrase.addPhrase("example_phrase", "&3This is an example phrase!");
