@@ -58,7 +58,7 @@ public class ChatPhrase {
 	
 	public static String getValueGlobal(String phrase_id_key) {
 		
-		String value = LocalPhrases.get(phrase_id_key);
+		String value = GlobalPhrases.get(phrase_id_key);
 		
 		return value;
 	}

@@ -28,8 +28,8 @@ public class ChatPhrases extends JavaPlugin {
 			String[] temp;
 			temp = phrase.split("%b", 2);
 			
-			String phrase_id = temp[1];
-			String phrase_content = temp[2];
+			String phrase_id = temp[0];
+			String phrase_content = temp[1];
 			
 			ChatPhrase.addGlobalPhrase(phrase_id, phrase_content);
 
