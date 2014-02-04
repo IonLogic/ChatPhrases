@@ -64,7 +64,7 @@ public class ChatPhrase {
 	}
 	
 	/**
-	 * Gets a phrase specified by the plugin.
+	 * Gets a phrase specified by the plugin. You should be using getPhrase() as it performs a better search.
 	 * 
 	 * @author ZeWildGuy
 	 * @param requested_phrase_id
