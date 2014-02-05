@@ -2,6 +2,7 @@ package com.bugs3.zewildguy.chatphrases;
 
 import java.util.HashMap;
 
+//something
 /**
  * ChatPhrase class stores all methods for ChatPhrase objects.
  * 
