@@ -88,6 +88,7 @@ public class ChatPhrase {
 	
 	/**
 	 * Looks for and gets a phrase specified in the config.yml file. If no phrase is found, it will search for a phrase specified by the plugin.
+	 * Please refrain from using this method. It will be removed in a future update.
 	 * 
 	 * @author ZeWildGuy
 	 * @param requested_phrase_id
@@ -118,6 +119,41 @@ public class ChatPhrase {
 		}
 		
 		
+	}
+	
+	/**
+	 * Looks for and gets a phrase specified in the config.yml file. If no phrase is found, it will search for a phrase specified by the plugin.
+	 * Also replaces variables with the values specified in the array.
+	 * 
+	 * @author ZeWildGuy
+	 * @param requested_phrase_id The phrase that is requested.
+	 * @param backup_phrase_id The backup phrase that is requested.
+	 * @param array An array of variables and their values. 
+	 * @return phrase
+	 */
+	public static String getPhrase(String requested_phrase_id, String backup_phrase_id, String[] array) {
+		
+		String phrase_key = matchGlobal(requested_phrase_id);
+		String backup_phrase_key = match(backup_phrase_id);
+		
+		if(phrase_key != null) {
+			String phrase_value = getValueGlobal(phrase_key);
+			
+			String final_phrase = ChatFormatParser.parseChatColour(phrase_value);
+			return final_phrase;
+			
+		} else if(backup_phrase_key != null) {
+			String phrase_key1 = match(backup_phrase_id);
+			
+			String phrase_value1 = getValue(phrase_key1);
+		
+			String formatted_phrase1 = ChatFormatParser.parseChatColour(phrase_value1);
+			String final_phrase1 = null; //replaces variable names with content
+			return final_phrase1;
+			
+		} else {
+			return error;
+		}
 	}
 	
 	/**
