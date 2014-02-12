@@ -94,6 +94,29 @@ public class ChatPhrase {
 	}
 	
 	/**
+	 * Gets a phrase specified by the plugin. You should be using getPhrase() as it performs a better search.
+	 * 
+	 * @author ZeWildGuy
+	 * @param requested_phrase_id
+	 * @return phrase
+	 */
+	public static String getLocalPhrase(String requested_phrase_id, HashMap<String, String> map_of_variables) {
+		
+		String phrase_key = match(requested_phrase_id);
+		
+		if(phrase_key != null) {
+			String phrase_value = getValue(phrase_key);
+			String final_phrase_value = replaceVariables(phrase_value, map_of_variables);
+	
+			String final_phrase = ChatFormatParser.parseChatColour(final_phrase_value);
+		
+			return final_phrase;
+		} else {
+			return error;
+		}
+	}
+	
+	/**
 	 * Looks for and retrieves a phrase specified in the config.yml file. If no phrase is found, it will search for a phrase specified by the plugin.
 	 * Please refrain from using this method. It will be removed in a future update.
 	 * 
