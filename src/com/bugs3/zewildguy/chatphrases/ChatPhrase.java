@@ -65,8 +65,11 @@ public class ChatPhrase {
 		return value;
 	}
 	
-	private static String replaceVariables(String formatted_phrase, Map map_of_variables) {
+	private static String replaceVariables(String formatted_phrase, HashMap<String, String> map_of_variables) {
 		
+		for(String key : map_of_variables.keySet()) {
+			formatted_phrase.replaceAll("%" + key + "%", map_of_variables.get(key));
+		}
 		
 		return formatted_phrase;
 	}
