@@ -87,7 +87,7 @@ public class ChatPhrase {
 	}
 	
 	/**
-	 * Looks for and gets a phrase specified in the config.yml file. If no phrase is found, it will search for a phrase specified by the plugin.
+	 * Looks for and retrieves a phrase specified in the config.yml file. If no phrase is found, it will search for a phrase specified by the plugin.
 	 * Please refrain from using this method. It will be removed in a future update.
 	 * 
 	 * @author ZeWildGuy
@@ -122,7 +122,7 @@ public class ChatPhrase {
 	}
 	
 	/**
-	 * Looks for and gets a phrase specified in the config.yml file. If no phrase is found, it will search for a phrase specified by the plugin.
+	 * Looks for and retrieves a phrase specified in the config.yml file. If no phrase is found, it will search for a phrase specified by the plugin.
 	 * Also replaces variables with the values specified in the array.
 	 * 
 	 * @author ZeWildGuy
