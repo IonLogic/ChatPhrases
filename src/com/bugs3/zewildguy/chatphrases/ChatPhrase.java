@@ -1,6 +1,7 @@
 package com.bugs3.zewildguy.chatphrases;
 
 import java.util.HashMap;
+import java.util.Map;
 
 //something
 /**
@@ -64,7 +65,10 @@ public class ChatPhrase {
 		return value;
 	}
 	
-	private static String replaceVariables(String formatted_phrase, String[] array) {
+	private static String replaceVariables(String formatted_phrase, Map map_of_variables) {
+		
+		
+		return formatted_phrase;
 	}
 	
 	/**
@@ -97,6 +101,7 @@ public class ChatPhrase {
 	 * @param requested_phrase_id
 	 * @param backup_phrase_id
 	 * @return phrase
+	 * @deprecated
 	 */
 	public static String getPhrase(String requested_phrase_id, String backup_phrase_id) {
 		
@@ -134,16 +139,16 @@ public class ChatPhrase {
 	 * @param array An array of variables and their values. 
 	 * @return phrase
 	 */
-	public static String getPhrase(String requested_phrase_id, String backup_phrase_id, String[] array_of_variabes) {
+	public static String getPhrase(String requested_phrase_id, String backup_phrase_id, Map map_of_variabes) {
 		
 		String phrase_key = matchGlobal(requested_phrase_id);
 		String backup_phrase_key = match(backup_phrase_id);
 		
 		if(phrase_key != null) {
 			String phrase_value = getValueGlobal(phrase_key);
+			String final_phrase_value = replaceVariables(phrase_value, map_of_variabes); //replaces variable names with content
 			
-			String formatted_phrase = ChatFormatParser.parseChatColour(phrase_value);
-			String final_phrase = replaceVariables(formatted_phrase, array_of_variabes); //replaces variable names with content
+			String final_phrase = ChatFormatParser.parseChatColour(final_phrase_value);
 			return final_phrase;
 			
 		} else if(backup_phrase_key != null) {
