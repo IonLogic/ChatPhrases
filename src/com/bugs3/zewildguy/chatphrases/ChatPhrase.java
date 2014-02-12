@@ -134,7 +134,7 @@ public class ChatPhrase {
 	 * @param array An array of variables and their values. 
 	 * @return phrase
 	 */
-	public static String getPhrase(String requested_phrase_id, String backup_phrase_id, String[] array) {
+	public static String getPhrase(String requested_phrase_id, String backup_phrase_id, String[] array_of_variabes) {
 		
 		String phrase_key = matchGlobal(requested_phrase_id);
 		String backup_phrase_key = match(backup_phrase_id);
@@ -143,7 +143,7 @@ public class ChatPhrase {
 			String phrase_value = getValueGlobal(phrase_key);
 			
 			String formatted_phrase = ChatFormatParser.parseChatColour(phrase_value);
-			String final_phrase = replaceVariables(formatted_phrase, array); //replaces variable names with content
+			String final_phrase = replaceVariables(formatted_phrase, array_of_variabes); //replaces variable names with content
 			return final_phrase;
 			
 		} else if(backup_phrase_key != null) {
@@ -152,7 +152,7 @@ public class ChatPhrase {
 			String phrase_value1 = getValue(phrase_key1);
 		
 			String formatted_phrase1 = ChatFormatParser.parseChatColour(phrase_value1);
-			String final_phrase1 = replaceVariables(formatted_phrase1, array); //replaces variable names with content
+			String final_phrase1 = replaceVariables(formatted_phrase1, array_of_variabes); //replaces variable names with content
 			return final_phrase1;
 			
 		} else {
