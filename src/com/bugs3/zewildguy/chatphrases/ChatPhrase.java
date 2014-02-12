@@ -64,6 +64,9 @@ public class ChatPhrase {
 		return value;
 	}
 	
+	private static String replaceVariables(String formatted_phrase, String[] array) {
+	}
+	
 	/**
 	 * Gets a phrase specified by the plugin. You should be using getPhrase() as it performs a better search.
 	 * 
@@ -139,7 +142,8 @@ public class ChatPhrase {
 		if(phrase_key != null) {
 			String phrase_value = getValueGlobal(phrase_key);
 			
-			String final_phrase = ChatFormatParser.parseChatColour(phrase_value);
+			String formatted_phrase = ChatFormatParser.parseChatColour(phrase_value);
+			String final_phrase = replaceVariables(formatted_phrase, array); //replaces variable names with content
 			return final_phrase;
 			
 		} else if(backup_phrase_key != null) {
@@ -148,14 +152,14 @@ public class ChatPhrase {
 			String phrase_value1 = getValue(phrase_key1);
 		
 			String formatted_phrase1 = ChatFormatParser.parseChatColour(phrase_value1);
-			String final_phrase1 = null; //replaces variable names with content
+			String final_phrase1 = replaceVariables(formatted_phrase1, array); //replaces variable names with content
 			return final_phrase1;
 			
 		} else {
 			return error;
 		}
 	}
-	
+
 	/**
 	 * Adds a phrase to the GlobalPhrase list. <b>Not for general use.</b>
 	 * @author ZeWildGuy
