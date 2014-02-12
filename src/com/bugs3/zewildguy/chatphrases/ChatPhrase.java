@@ -77,6 +77,7 @@ public class ChatPhrase {
 	 * @author ZeWildGuy
 	 * @param requested_phrase_id
 	 * @return phrase
+	 * @deprecated 
 	 */
 	public static String getLocalPhrase(String requested_phrase_id) {
 		
@@ -162,7 +163,7 @@ public class ChatPhrase {
 	 * @param array An array of variables and their values. 
 	 * @return phrase
 	 */
-	public static String getPhrase(String requested_phrase_id, String backup_phrase_id, Map map_of_variabes) {
+	public static String getPhrase(String requested_phrase_id, String backup_phrase_id, HashMap<String, String> map_of_variabes) {
 		
 		String phrase_key = matchGlobal(requested_phrase_id);
 		String backup_phrase_key = match(backup_phrase_id);
@@ -175,12 +176,10 @@ public class ChatPhrase {
 			return final_phrase;
 			
 		} else if(backup_phrase_key != null) {
-			String phrase_key1 = match(backup_phrase_id);
+			String phrase_value1 = getValue(backup_phrase_key);
+			String final_phrase_value1 = replaceVariables(phrase_value1, map_of_variabes); //replaces variable names with content
 			
-			String phrase_value1 = getValue(phrase_key1);
-		
-			String formatted_phrase1 = ChatFormatParser.parseChatColour(phrase_value1);
-			String final_phrase1 = replaceVariables(formatted_phrase1, array_of_variabes); //replaces variable names with content
+			String final_phrase1 = ChatFormatParser.parseChatColour(final_phrase_value1);
 			return final_phrase1;
 			
 		} else {
