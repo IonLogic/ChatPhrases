@@ -102,6 +102,7 @@ public class ChatPhrase {
 	 * 
 	 * @author ZeWildGuy
 	 * @param requested_phrase_id
+	 * @param map_of_variabes A map of variables and their values. 
 	 * @return phrase
 	 */
 	public static String getLocalPhrase(String requested_phrase_id, HashMap<String, String> map_of_variables) {
@@ -163,7 +164,7 @@ public class ChatPhrase {
 	 * @author ZeWildGuy
 	 * @param requested_phrase_id The phrase that is requested.
 	 * @param backup_phrase_id The backup phrase that is requested.
-	 * @param array An array of variables and their values. 
+	 * @param map_of_variabes A map of variables and their values. 
 	 * @return phrase
 	 */
 	public static String getPhrase(String requested_phrase_id, String backup_phrase_id, HashMap<String, String> map_of_variabes) {
