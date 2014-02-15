@@ -26,7 +26,7 @@ public class ChatPhrases extends JavaPlugin {
 		for(String phrase : listOfStrings) {
 			//String[] splits = phrase.split("%b", 2);
 			String[] temp;
-			temp = phrase.split("%b", 2);
+			temp = phrase.split("%b%", 2);
 			
 			String phrase_id = temp[0];
 			String phrase_content = temp[1];
