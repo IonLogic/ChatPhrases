@@ -25,7 +25,7 @@ public class ChatPhrase {
 	public static String match(String phrase_to_match) {
 		boolean match = false; 
 		if(plugin.getConfig().getString("settings.phrase-fallback") == "true") {
-			
+			String error = phrase_to_match;
 		} 
 		
 		for(String phrase_key : LocalPhrases.keySet()) {
