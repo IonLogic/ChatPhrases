@@ -123,9 +123,9 @@ public class ChatPhrase {
 	 * <b>This method will be deprecated and removed after future changes to getPhrase()</b>
 	 * 
 	 * @author ZeWildGuy
-	 * @param requested_phrase_id
+	 * @param requested_phrase_id The phrase you would like to retrieve
 	 * @param map_of_variabes A map of variables and their values. 
-	 * @return phrase
+	 * @return The final phrase fully formatted.
 	 */
 	public static String getLocalPhrase(String requested_phrase_id, HashMap<String, String> map_of_variables) {
 		
@@ -181,13 +181,13 @@ public class ChatPhrase {
 	
 	/**
 	 * Looks for and retrieves a phrase specified in the config.yml file. If no phrase is found, it will search for a phrase specified by the plugin.
-	 * Also replaces variables with the values specified in the array.
+	 * Also replaces variables with the values specified in the map.
 	 * 
 	 * @author ZeWildGuy
 	 * @param requested_phrase_id The phrase that is requested.
 	 * @param backup_phrase_id The backup phrase that is requested.
 	 * @param map_of_variabes A map of variables and their values. 
-	 * @return phrase
+	 * @return The final phrase fully formatted.
 	 */
 	public static String getPhrase(String requested_phrase_id, String backup_phrase_id, HashMap<String, String> map_of_variabes) {
 		
