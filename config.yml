@@ -2,3 +2,5 @@ phrases:
    - example_phrase%b%&3This is an example phrase!
    - Unknown_Command%b%&4Unknown Command! &fType 'help' for help.
    - No_Permission%b%&4You do not have permission to do this.
+Settings:
+   phrase-fallback: false

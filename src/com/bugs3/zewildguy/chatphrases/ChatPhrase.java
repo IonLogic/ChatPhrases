@@ -11,6 +11,12 @@ import java.util.Map;
  */
 public class ChatPhrase {
 
+	private static ChatPhrases plugin;
+	
+	public ChatPhrase(ChatPhrases plugin) {
+        this.plugin = plugin;
+    }
+	
 	private static HashMap<String, String> LocalPhrases = new HashMap<String, String>();
 	private static HashMap<String, String> GlobalPhrases = new HashMap<String, String>();
 	
@@ -18,7 +24,9 @@ public class ChatPhrase {
 	
 	public static String match(String phrase_to_match) {
 		boolean match = false; 
-		String error = "The requested phrase could not be found!";
+		if(plugin.getConfig().getString("settings.phrase-fallback") == "true") {
+			
+		} 
 		
 		for(String phrase_key : LocalPhrases.keySet()) {
 			if(phrase_key.equalsIgnoreCase(phrase_to_match)) {
