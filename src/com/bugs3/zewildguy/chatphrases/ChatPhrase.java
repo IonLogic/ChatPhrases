@@ -12,7 +12,7 @@ import java.util.Map;
 public class ChatPhrase {
 
 	private static ChatPhrases plugin;
-	private static String error = "The requested phrase could not be found!";
+	public static String error = "The requested phrase could not be found!";
 	
 	public ChatPhrase(ChatPhrases plugin) {
         this.plugin = plugin;
@@ -30,7 +30,7 @@ public class ChatPhrase {
 	public static String match(String phrase_to_match) {
 		boolean match = false; 
 		if(plugin.getConfig().getString("settings.phrase-fallback") == "true") {
-			String error = phrase_to_match;
+			error = phrase_to_match;
 		} 
 		
 		for(String phrase_key : LocalPhrases.keySet()) {
@@ -50,7 +50,7 @@ public class ChatPhrase {
 	public static String matchGlobal(String phrase_to_match) {
 		boolean match = false; 
 		if(plugin.getConfig().getString("settings.phrase-fallback") == "true") {
-			String error = phrase_to_match;
+			error = phrase_to_match;
 		}
 		
 		for(String phrase_key : GlobalPhrases.keySet()) {
@@ -62,9 +62,9 @@ public class ChatPhrase {
         }
 		
 		if(!match) {
-			return null;
+			return error;
 		}
-		return null;
+		return error;
 	}
 	
 	public static String getValue(String phrase_id_key) {
