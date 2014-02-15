@@ -13,6 +13,7 @@ public class ChatPhrase {
 
 	private static ChatPhrases plugin;
 	public static String error = "The requested phrase could not be found!";
+	public static boolean phraseFallback =  plugin.getConfig().getBoolean("settings.phrase-fallback");
 	
 	public ChatPhrase(ChatPhrases plugin) {
         this.plugin = plugin;
@@ -29,8 +30,10 @@ public class ChatPhrase {
 	
 	public static String match(String phrase_to_match) {
 		boolean match = false; 
-		if(plugin.getConfig().getString("settings.phrase-fallback") == "true") {
-			error = phrase_to_match;
+		if(plugin.getConfig().getString("settings.phrase-fallback") != null) {
+			if(plugin.getConfig().getString("settings.phrase-fallback") == "true") {
+				error = phrase_to_match;
+			} 
 		} 
 		
 		for(String phrase_key : LocalPhrases.keySet()) {
@@ -49,8 +52,10 @@ public class ChatPhrase {
 	
 	public static String matchGlobal(String phrase_to_match) {
 		boolean match = false; 
-		if(plugin.getConfig().getString("settings.phrase-fallback") == "true") {
-			error = phrase_to_match;
+		if(phraseFallback = true) {
+			if(phraseFallback = true) {
+				error = phrase_to_match;
+			} 
 		}
 		
 		for(String phrase_key : GlobalPhrases.keySet()) {
