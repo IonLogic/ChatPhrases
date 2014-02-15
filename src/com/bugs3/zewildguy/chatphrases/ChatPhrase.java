@@ -121,7 +121,7 @@ public class ChatPhrase {
 		
 		String phrase_key = match(requested_phrase_id);
 		
-		if(phrase_key != null) {
+		if(phrase_key.equalsIgnoreCase(requested_phrase_id)) {
 			String phrase_value = getValue(phrase_key);
 			String final_phrase_value = replaceVariables(phrase_value, map_of_variables);
 	
@@ -129,7 +129,7 @@ public class ChatPhrase {
 		
 			return final_phrase;
 		} else {
-			return error;
+			return match(requested_phrase_id);
 		}
 	}
 	
@@ -184,14 +184,14 @@ public class ChatPhrase {
 		String phrase_key = matchGlobal(requested_phrase_id);
 		String backup_phrase_key = match(backup_phrase_id);
 		
-		if(phrase_key != null) {
+		if(phrase_key.equalsIgnoreCase(requested_phrase_id)) {
 			String phrase_value = getValueGlobal(phrase_key);
 			String final_phrase_value = replaceVariables(phrase_value, map_of_variabes); //replaces variable names with content
 			
 			String final_phrase = ChatFormatParser.parseChatColour(final_phrase_value);
 			return final_phrase;
 			
-		} else if(backup_phrase_key != null) {
+		} else if(backup_phrase_key.equalsIgnoreCase(backup_phrase_id)) {
 			String phrase_value1 = getValue(backup_phrase_key);
 			String final_phrase_value1 = replaceVariables(phrase_value1, map_of_variabes); //replaces variable names with content
 			
@@ -199,7 +199,7 @@ public class ChatPhrase {
 			return final_phrase1;
 			
 		} else {
-			return error;
+			return match(requested_phrase_id);
 		}
 	}
 
