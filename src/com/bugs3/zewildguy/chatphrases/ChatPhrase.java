@@ -99,6 +99,7 @@ public class ChatPhrase {
 	
 	/**
 	 * Gets a phrase specified by the plugin. You should be using getPhrase() as it performs a better search.
+	 * <b>This method will be deprecated and removed after future changes to getPhrase()</b>
 	 * 
 	 * @author ZeWildGuy
 	 * @param requested_phrase_id
