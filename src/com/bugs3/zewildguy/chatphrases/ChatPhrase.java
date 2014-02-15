@@ -12,15 +12,20 @@ import java.util.Map;
 public class ChatPhrase {
 
 	private static ChatPhrases plugin;
+	private static String error = "The requested phrase could not be found!";
 	
 	public ChatPhrase(ChatPhrases plugin) {
         this.plugin = plugin;
+        
+        if(plugin.getConfig().getString("settings.phrase-fallback") == "false") {
+    		this.error = plugin.getConfig().getString("settings.error-message");
+    	} else {
+    		this.error = null;
+    	}
     }
 	
 	private static HashMap<String, String> LocalPhrases = new HashMap<String, String>();
 	private static HashMap<String, String> GlobalPhrases = new HashMap<String, String>();
-	
-	public static String error = "The requested phrase could not be found!";
 	
 	public static String match(String phrase_to_match) {
 		boolean match = false; 
@@ -37,7 +42,7 @@ public class ChatPhrase {
         }
 		
 		if(!match) {
-			return error;
+			return ChatPhrase.error;
 		}
 		return error;
 	}

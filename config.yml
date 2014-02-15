@@ -4,3 +4,4 @@ phrases:
    - No_Permission%b%&4You do not have permission to do this.
 Settings:
    phrase-fallback: true
+   error-message: The requested phrase could not be found!
