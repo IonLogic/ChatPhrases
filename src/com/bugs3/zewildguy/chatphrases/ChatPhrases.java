@@ -3,11 +3,14 @@ package com.bugs3.zewildguy.chatphrases;
 import java.util.Arrays;
 import java.util.List;
 
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 
 public class ChatPhrases extends JavaPlugin {
 
+	public Plugin plugin = this.plugin;
+	
 	@Override
 	public void onDisable() {
 		
