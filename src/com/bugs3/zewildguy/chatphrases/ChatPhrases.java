@@ -42,15 +42,6 @@ public class ChatPhrases extends JavaPlugin {
 	
 	public static String errorHandler(String phrase_id) {
 		String error = "The requested phrase could not be found!";
-		 if(plugin.getConfig().getString("settings.phrase-fallback") != null) {
-			 if(plugin.getConfig().getString("settings.phrase-fallback") == "false") {
-				 error = plugin.getConfig().getString("settings.error-message");
-				 return error;
-			 }
-			 return error;
-		 } else {
-			 error = phrase_id;
-			 return error;
-		 }
+		return phrase_id;
 	}
 }
