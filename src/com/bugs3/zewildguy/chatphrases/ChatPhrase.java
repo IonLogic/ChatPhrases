@@ -13,28 +13,21 @@ public class ChatPhrase {
 
 	private static ChatPhrases plugin;
 	public static String error = "The requested phrase could not be found!";
-	public static boolean phraseFallback =  plugin.getConfig().getBoolean("settings.phrase-fallback");
 	
 	public ChatPhrase(ChatPhrases plugin) {
         this.plugin = plugin;
-        
-        if(plugin.getConfig().getString("settings.phrase-fallback") == "false") {
-    		this.error = plugin.getConfig().getString("settings.error-message");
-    	} else {
-    		this.error = null;
-    	}
     }
 	
 	private static HashMap<String, String> LocalPhrases = new HashMap<String, String>();
 	private static HashMap<String, String> GlobalPhrases = new HashMap<String, String>();
 	
+	private static String prepareError(String phrase_id) {
+		String error = ChatPhrases.errorHandler(phrase_id);
+		return error;
+	}
+	
 	public static String match(String phrase_to_match) {
 		boolean match = false; 
-		if(plugin.getConfig().getString("settings.phrase-fallback") != null) {
-			if(plugin.getConfig().getString("settings.phrase-fallback") == "true") {
-				error = phrase_to_match;
-			} 
-		} 
 		
 		for(String phrase_key : LocalPhrases.keySet()) {
 			if(phrase_key.equalsIgnoreCase(phrase_to_match)) {
@@ -45,18 +38,13 @@ public class ChatPhrase {
         }
 		
 		if(!match) {
-			return ChatPhrase.error;
+			return null;
 		}
-		return error;
+		return null;
 	}
 	
 	public static String matchGlobal(String phrase_to_match) {
 		boolean match = false; 
-		if(phraseFallback = true) {
-			if(phraseFallback = true) {
-				error = phrase_to_match;
-			} 
-		}
 		
 		for(String phrase_key : GlobalPhrases.keySet()) {
 			if(phrase_key.equalsIgnoreCase(phrase_to_match)) {
@@ -67,9 +55,9 @@ public class ChatPhrase {
         }
 		
 		if(!match) {
-			return error;
+			return null;
 		}
-		return error;
+		return null;
 	}
 	
 	public static String getValue(String phrase_id_key) {
@@ -86,10 +74,10 @@ public class ChatPhrase {
 		return value;
 	}
 	
-	private static String replaceVariables(String formatted_phrase, HashMap<String, String> map_of_variables) {
+	public static String replaceVariables(String formatted_phrase, HashMap<String, String> map_of_variables) {
 		
 		for(String key : map_of_variables.keySet()) {
-			formatted_phrase.replaceAll("%" + key + "%", map_of_variables.get(key));
+			formatted_phrase = formatted_phrase.replaceAll("%" + key + "%", map_of_variables.get(key));
 		}
 		
 		return formatted_phrase;
@@ -131,7 +119,7 @@ public class ChatPhrase {
 		
 		String phrase_key = match(requested_phrase_id);
 		
-		if(phrase_key.equalsIgnoreCase(requested_phrase_id)) {
+		if(phrase_key != null) {
 			String phrase_value = getValue(phrase_key);
 			String final_phrase_value = replaceVariables(phrase_value, map_of_variables);
 	
@@ -139,7 +127,7 @@ public class ChatPhrase {
 		
 			return final_phrase;
 		} else {
-			return match(requested_phrase_id);
+			return prepareError(requested_phrase_id);
 		}
 	}
 	
@@ -194,14 +182,14 @@ public class ChatPhrase {
 		String phrase_key = matchGlobal(requested_phrase_id);
 		String backup_phrase_key = match(backup_phrase_id);
 		
-		if(phrase_key.equalsIgnoreCase(requested_phrase_id)) {
+		if(phrase_key != null) {
 			String phrase_value = getValueGlobal(phrase_key);
 			String final_phrase_value = replaceVariables(phrase_value, map_of_variabes); //replaces variable names with content
 			
 			String final_phrase = ChatFormatParser.parseChatColour(final_phrase_value);
 			return final_phrase;
 			
-		} else if(backup_phrase_key.equalsIgnoreCase(backup_phrase_id)) {
+		} else if(backup_phrase_key != null) {
 			String phrase_value1 = getValue(backup_phrase_key);
 			String final_phrase_value1 = replaceVariables(phrase_value1, map_of_variabes); //replaces variable names with content
 			
@@ -209,7 +197,7 @@ public class ChatPhrase {
 			return final_phrase1;
 			
 		} else {
-			return match(requested_phrase_id);
+			return prepareError(requested_phrase_id);
 		}
 	}
 
