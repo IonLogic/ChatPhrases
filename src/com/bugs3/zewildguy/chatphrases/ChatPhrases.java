@@ -3,11 +3,15 @@ package com.bugs3.zewildguy.chatphrases;
 import java.util.Arrays;
 import java.util.List;
 
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 
 public class ChatPhrases extends JavaPlugin {
 
+	public Plugin plugin = this.plugin;
+	public Plugin plugina = plugin;
+	
 	@Override
 	public void onDisable() {
 		
@@ -34,5 +38,10 @@ public class ChatPhrases extends JavaPlugin {
 			ChatPhrase.addGlobalPhrase(phrase_id, phrase_content);
 
 		}
+	}
+	
+	public static String errorHandler(String phrase_id) {
+		String error = "The requested phrase could not be found!";
+		return phrase_id;
 	}
 }
